@@ -1,5 +1,14 @@
+# Python
 __pycache__/
-*.py[cod]
+*.pyc
+
+# PyInstaller build output
 build/
 dist/
-*.egg-info/
+*.spec
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
