@@ -542,7 +542,7 @@ class App:
             f"Reason: {self.tray_error or 'unknown'}\n\n"
             f"Python used by this app:\n{sys.executable}\n\n"
             "Install it with:\n"
-            f"\"{sys.executable}\" -m pip install --user pystray pillow\n\n"
+            f"\"{sys.executable}\" -m pip install --user pystray six pillow\n\n"
             "Then restart the app.",
             parent=self.root,
         )
