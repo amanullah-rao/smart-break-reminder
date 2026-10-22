@@ -8,11 +8,15 @@ sound and a countdown telling you to take a short break (for example 5 minutes).
 
 - Circular countdown timer with Start / Pause / Resume / Reset
 - Break pop-up that stays on top of your work, with sound and progress bar
-- Snooze or skip a break
+- Snooze a break for 5 minutes (up to 2 times in a row) or skip it
 - Quick presets: 25/5, 50/10, 60/5, plus custom durations
 - Hide to system tray, or exit completely (choose when closing, or remember it)
 - Start automatically when Windows opens
-- Break history and "breaks completed today" counter
+- Handles sleep: if the computer was away for at least a break's length, a fresh
+  focus cycle starts; a shorter interruption pauses the timer
+- Light, Dark and Auto themes (Auto follows the Windows setting, including the title bar)
+- Sharp on high-DPI (125% / 150%) displays
+- Break history (latest 500 kept) and "breaks completed today" counter
 - Keyboard shortcuts: `Ctrl+Space` start/pause, `Ctrl+S` save, `Ctrl+H` history
 
 ## Download (Windows)
@@ -32,16 +36,25 @@ python Break_Reminder.py
 `pystray` and `pillow` are optional. Without them the app still works, but the
 system tray option is disabled.
 
+## Run the tests
+
+```bash
+python -m unittest discover tests
+```
+
 ## Build the .exe yourself
 
 ```bash
 pip install pyinstaller
 pyinstaller --onefile --windowed --clean --name SmartBreak ^
+  --icon assets/smart_break.ico --add-data "assets;assets" ^
   --collect-submodules pystray --hidden-import pystray._win32 ^
   --hidden-import PIL._tkinter_finder Break_Reminder.py
 ```
 
 The executable will be in the `dist` folder.
+
+The icon lives in `assets/`. To change it, edit and run `python tools/make_icon.py`.
 
 ## Settings location
 
